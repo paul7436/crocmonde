@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Croc'Monde – Prenez vos billets pour un voyage gustatif | Michel & Augustin</title>
+  <meta name="description" content="Croc'Monde, la boîte à biscuits qui vous fait voyager à travers 6 continents. Une création Michel & Augustin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* =============================================
+       VARIABLES & BASE — STYLE MICHEL & AUGUSTIN
+       ============================================= */
+    :root {
+      --jaune:       rgba(230,0,126,.8);
+      --jaune-clair: rgba(230,0,126,.08);
+      --jaune-dark:  rgba(200,0,106,.9);
+      --marron:      #1a1a1a;
+      --marron-med:  #444444;
+      --beige:       #ffffff;
+      --beige-dark:  #f5f5f5;
+      --rouge:       rgba(230,0,126,.8);
+      --rouge-dark:  rgba(200,0,106,.9);
+      --vert:        #2EBE6E;
+      --bleu:        #1E9BD7;
+      --blanc:       #FFFFFF;
+      --texte:       #1a1a1a;
+      --gris:        #777;
+      --radius:      20px;
+      --radius-xl:   40px;
+      --shadow:      0 8px 32px rgba(0,0,0,.08);
+      --shadow-xl:   0 20px 60px rgba(0,0,0,.14);
+      --trans:       all 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--beige);
+      color: var(--texte);
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* =============================================
+       TOP BAR
+       ============================================= */
+    .topbar {
+      background: #f5f5f5;
+      color: #1a1a1a;
+      text-align: center;
+      font-size: .8rem;
+      font-weight: 700;
+      padding: .45rem 1rem;
+      letter-spacing: .5px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .topbar span { color: rgba(230,0,126,.8); }
+
+    /* =============================================
+       NAVBAR
+       ============================================= */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #ffffff;
+      border-bottom: 2px solid #f0f0f0;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      height: 72px;
+    }
+
+    /* Logo */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex-shrink: 0;
+      margin-right: 2rem;
+    }
+    .nav-logo .logo-globe {
+      width: 48px; height: 48px;
+      background: rgba(230,0,126,.8);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 3px 10px rgba(232,49,74,.3);
+      transition: var(--trans);
+    }
+    .nav-logo:hover .logo-globe { transform: rotate(20deg) scale(1.1); }
+    .nav-logo .logo-text { line-height: 1.1; }
+    .nav-logo .logo-text strong {
+      display: block;
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #1a1a1a;
+      letter-spacing: -.5px;
+    }
+    .nav-logo .logo-text small {
+      font-size: .7rem;
+      color: rgba(230,0,126,.8);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Menu items */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0;
+      flex: 1;
+    }
+    .nav-item { position: relative; }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      padding: 0 1.1rem;
+      height: 72px;
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .95rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      white-space: nowrap;
+      transition: var(--trans);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -3px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .nav-link .chevron {
+      font-size: .65rem;
+      transition: transform .3s;
+    }
+    .nav-item:hover > .nav-link,
+    .nav-item:focus-within > .nav-link {
+      color: rgba(230,0,126,.8);
+      border-bottom-color: rgba(230,0,126,.8);
+    }
+    .nav-item:hover .chevron { transform: rotate(180deg); }
+
+    /* CTA nav */
+    .nav-cta {
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .nav-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(230,0,126,.8);
+      color: white;
+      padding: .65rem 1.4rem;
+      border-radius: 50px;
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      font-size: .9rem;
+      transition: var(--trans);
+      box-shadow: 0 4px 12px rgba(232,49,74,.3);
+    }
+    .nav-cta a:hover { background: #1a1a1a; color: #fff; transform: translateY(-2px); }
+
+    /* =============================================
+       MEGA MENU DROPDOWN
+       ============================================= */
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--blanc);
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.12);
+      padding: 1.5rem 2rem 2rem;
+      min-width: 260px;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--trans);
+      border-top: 3px solid rgba(230,0,126,.8);
+    }
+    .nav-item:hover .dropdown,
+    .nav-item:focus-within .dropdown {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .dropdown-title {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #aaa;
+      margin-bottom: 1rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .dropdown ul { list-style: none; }
+    .dropdown li a {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .7rem .5rem;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: .95rem;
+      color: #1a1a1a;
+      transition: var(--trans);
+      text-transform: uppercase;
+      letter-spacing: .3px;
+      font-size: .85rem;
+    }
+    .dropdown li a .ico {
+      width: 32px; height: 32px;
+      background: rgba(230,0,126,.08);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: var(--trans);
+    }
+    .dropdown li a:hover {
+      color: rgba(230,0,126,.8);
+    }
+    .dropdown li a:hover .ico {
+      background: rgba(230,0,126,.8);
+    }
+
+    /* Mobile burger */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    .burger span {
+      display: block;
+      width: 28px; height: 3px;
+      background: var(--marron);
+      border-radius: 3px;
+    }
+
+    /* =============================================
+       HERO SECTION
+       ============================================= */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      background: rgba(230,0,126,.8);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Vagues décoratives */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0; right: 0;
+      height: 100px;
+      background: #f5f5f5;
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    /* Taches décoratives désactivées */
+    .hero-blob { display: none; }
+
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 5rem 2rem 8rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    /* Left side */
+    .hero-left { }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: rgba(0,0,0,.25);
+      color: #ffffff;
+      padding: .5rem 1.2rem;
+      border-radius: 50px;
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+    h1.hero-title {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    h1.hero-title em {
+      font-style: normal;
+      color: #ffffff;
+      position: relative;
+      display: inline-block;
+      background: rgba(0,0,0,.2);
+      padding: 0 .4rem;
+      border-radius: 6px;
+    }
+    h1.hero-title em::after { display: none; }
+    .hero-desc {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,.9);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.2);
+      border: 2px solid rgba(255,255,255,.5);
+      padding: .5rem 1rem;
+      border-radius: 50px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: #1a1a1a;
+      color: #ffffff;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      transition: var(--trans);
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: white; color: rgba(230,0,126,.8); transform: translateY(-3px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: transparent;
+      color: #ffffff;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      border: 3px solid rgba(255,255,255,.7);
+      transition: var(--trans);
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: white; color: rgba(230,0,126,.8); transform: translateY(-3px); }
+
+    /* Right side */
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-box-wrapper {
+      position: relative;
+    }
+    .hero-box-img {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 24px;
+      box-shadow: var(--shadow-xl);
+      animation: heroFloat 4s ease-in-out infinite;
+    }
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    /* Petits bonhommes style M&A */
+    .personnage {
+      position: absolute;
+      animation: persoFloat 3s ease-in-out infinite;
+    }
+    .personnage svg { width: 100%; height: auto; }
+
+    .perso-1 {
+      width: 100px;
+      bottom: -20px; left: -40px;
+      animation-delay: .5s;
+    }
+    .perso-2 {
+      width: 85px;
+      top: 10px; right: -30px;
+      animation-delay: 1.2s;
+    }
+    @keyframes persoFloat {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
+
+    /* Sticker rotatif */
+    .hero-sticker {
+      position: absolute;
+      bottom: 20px; right: -10px;
+      width: 90px; height: 90px;
+      background: var(--rouge);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 900;
+      font-size: .75rem;
+      line-height: 1.2;
+      padding: .5rem;
+      animation: stickerSpin 8s linear infinite;
+      box-shadow: 0 6px 20px rgba(232,49,74,.4);
+    }
+    @keyframes stickerSpin {
+      0%, 20%, 80%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(15deg); }
+    }
+    .hero-sticker .big { font-size: 1.8rem; }
+
+    /* =============================================
+       SECTION TITLE générique
+       ============================================= */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-kicker {
+      display: inline-block;
+      background: rgba(230,0,126,.08);
+      color: rgba(230,0,126,.8);
+      padding: .35rem 1rem;
+      border-radius: 50px;
+      font-size: .8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: #1a1a1a;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.1rem;
+      color: var(--gris);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       PAGE CARDS — accès aux 4 pages
+       ============================================= */
+    .pages-section {
+      background: #f5f5f5;
+      padding: 5rem 0;
+    }
+    .pages-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .page-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--trans);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .page-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-xl); }
+    .page-card-top {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+      gap: 1rem;
+    }
+    .page-card-icon {
+      width: 72px; height: 72px;
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+    }
+    .page-card-title {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--marron);
+      line-height: 1.2;
+    }
+    .page-card-desc {
+      font-size: .9rem;
+      color: var(--gris);
+      line-height: 1.5;
+    }
+    .page-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .9rem;
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      font-size: .9rem;
+      color: white;
+      transition: var(--trans);
+    }
+    /* Couleurs par carte */
+    .page-card-1 .page-card-top  { background: #FFF8EC; }
+    .page-card-1 .page-card-icon { background: #FFD600; }
+    .page-card-1 .page-card-bottom { background: #5C3D1E; }
+    .page-card-1:hover .page-card-bottom { background: rgba(230,0,126,.8); }
+
+    .page-card-2 .page-card-top  { background: #FFF0F0; }
+    .page-card-2 .page-card-icon { background: rgba(230,0,126,.8); color: white; }
+    .page-card-2 .page-card-bottom { background: rgba(230,0,126,.8); }
+    .page-card-2:hover .page-card-bottom { background: #5C3D1E; }
+
+    .page-card-3 .page-card-top  { background: #F0FFF6; }
+    .page-card-3 .page-card-icon { background: #2EBE6E; color: white; }
+    .page-card-3 .page-card-bottom { background: #2EBE6E; }
+    .page-card-3:hover .page-card-bottom { background: #5C3D1E; }
+
+    .page-card-4 .page-card-top  { background: #F0F8FF; }
+    .page-card-4 .page-card-icon { background: #1E9BD7; color: white; }
+    .page-card-4 .page-card-bottom { background: #1E9BD7; }
+    .page-card-4:hover .page-card-bottom { background: #5C3D1E; }
+
+    /* =============================================
+       CONTINENTS STRIP
+       ============================================= */
+    .continents-strip {
+      background: white;
+      padding: 5rem 0;
+    }
+    .continents-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+    }
+    .continent-pill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: .75rem;
+      padding: 1.5rem 1rem;
+      background: white;
+      border-radius: 16px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: var(--trans);
+      box-shadow: 0 4px 16px rgba(92,61,30,.08);
+    }
+    .continent-pill:hover {
+      transform: translateY(-6px);
+      border-color: var(--jaune);
+      box-shadow: var(--shadow);
+    }
+    .continent-emoji { font-size: 2.2rem; }
+    .continent-label {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: .9rem;
+      font-weight: 800;
+      color: var(--marron);
+      line-height: 1.2;
+    }
+    .continent-sublabel {
+      font-size: .75rem;
+      color: var(--gris);
+      font-style: italic;
+    }
+    .continent-pill .croc-badge {
+      background: var(--jaune);
+      color: var(--marron);
+      font-size: .7rem;
+      font-weight: 900;
+      padding: .2rem .6rem;
+      border-radius: 20px;
+    }
+
+    /* =============================================
+       PRODUIT BANDEAU
+       ============================================= */
+    .bandeau-produit {
+      background: #1a1a1a;
+      padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .bandeau-produit::before {
+      content: '🍪';
+      position: absolute;
+      font-size: 15rem;
+      opacity: .05;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .bandeau-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .bandeau-text .section-kicker { background: rgba(230,0,126,.08); color: rgba(230,0,126,.8); }
+    .bandeau-text .section-title { color: white; }
+    .bandeau-text p { color: rgba(255,255,255,.8); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; }
+    .bandeau-text .btn-primary { background: rgba(230,0,126,.8); color: white; }
+    .bandeau-text .btn-primary:hover { background: white; color: rgba(230,0,126,.8); }
+    .bandeau-img img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+      transform: rotate(2deg);
+      transition: var(--trans);
+    }
+    .bandeau-img img:hover { transform: rotate(0deg) scale(1.03); }
+
+    /* =============================================
+       AVIS / COMMUNAUTÉ
+       ============================================= */
+    .avis-section { background: rgba(230,0,126,.08); }
+    .avis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .avis-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      transition: var(--trans);
+    }
+    .avis-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+    .avis-stars { color: var(--jaune-dark); font-size: 1.1rem; margin-bottom: .75rem; }
+    .avis-text {
+      font-size: 1rem;
+      color: var(--texte);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    .avis-author {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .avis-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      background: var(--jaune);
+      font-weight: 900;
+      font-family: 'Baloo 2', sans-serif;
+      color: var(--marron);
+    }
+    .avis-name { font-weight: 700; font-size: .9rem; color: var(--marron); }
+    .avis-location { font-size: .78rem; color: var(--gris); }
+
+    /* =============================================
+       NEWSLETTER BANDEAU
+       ============================================= */
+    .newsletter {
+      background: rgba(230,0,126,.8);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .newsletter h3 {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: white;
+      margin-bottom: .5rem;
+    }
+    .newsletter p { color: rgba(255,255,255,.85); margin-bottom: 2rem; font-size: 1rem; }
+    .newsletter-form {
+      display: flex;
+      gap: .75rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: .9rem 1.5rem;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+      font-family: 'Nunito', sans-serif;
+      outline: none;
+    }
+    .newsletter-form button {
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      padding: .9rem 1.75rem;
+      border-radius: 50px;
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: var(--trans);
+    }
+    .newsletter-form button:hover { background: white; color: rgba(230,0,126,.8); }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+    .footer {
+      background: #1a1a1a;
+      color: rgba(255,255,255,.8);
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand strong {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: rgba(230,0,126,.8);
+      display: block;
+      margin-bottom: .25rem;
+    }
+    .footer-brand small { font-size: .8rem; opacity: .7; display: block; margin-bottom: 1rem; }
+    .footer-brand p { font-size: .9rem; line-height: 1.6; }
+    .footer-socials { display: flex; gap: .75rem; margin-top: 1.5rem; }
+    .footer-socials a {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem;
+      color: white;
+      transition: var(--trans);
+    }
+    .footer-socials a:hover { background: rgba(230,0,126,.8); color: white; transform: translateY(-3px); }
+    .footer-col h5 {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1rem;
+      font-weight: 900;
+      color: rgba(230,0,126,.8);
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: .6rem; }
+    .footer-col ul li a {
+      font-size: .9rem;
+      color: rgba(255,255,255,.7);
+      transition: var(--trans);
+    }
+    .footer-col ul li a:hover { color: rgba(230,0,126,.8); padding-left: 4px; }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.1);
+      text-align: center;
+      font-size: .85rem;
+      opacity: .6;
+    }
+    .footer-bottom span { color: rgba(230,0,126,.8); opacity: 1; }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+    @media (max-width: 1024px) {
+      .pages-grid { grid-template-columns: repeat(2, 1fr); }
+      .continents-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .nav-menu, .nav-cta { display: none; }
+      .burger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem 6rem; }
+      .hero-right { display: none; }
+      .pages-grid { grid-template-columns: 1fr 1fr; }
+      .continents-grid { grid-template-columns: repeat(2, 1fr); }
+      .bandeau-inner { grid-template-columns: 1fr; }
+      .avis-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .newsletter-form { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .pages-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    🌍 <span>Nouveau !</span> La boîte Croc'Monde disponible dans vos magasins — <span>Biscuits du monde signés Michel & Augustin</span>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <!-- Logo -->
+      <a href="#" class="nav-logo">
+        <div class="logo-globe">🌍</div>
+        <div class="logo-text">
+          <strong>Croc'Monde</strong>
+          <small>by Michel & Augustin</small>
+        </div>
+      </a>
+
+      <!-- Menu -->
+      <ul class="nav-menu">
+
+        <!-- 1. Le tour du monde en 6 crocs -->
+        <li class="nav-item">
+          <div class="nav-link">
+            Le tour du monde en 6 crocs
+            <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="dropdown">
+            <div class="dropdown-title">Explorer</div>
+            <ul>
+              <li>
+                <a href="#">
+                  <span class="ico">🍪</span>
+                  Le produit
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="ico">ℹ️</span>
+                  Informations pratiques
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- 2. Le carnet de voyage -->
+        <li class="nav-item">
+          <div class="nav-link">
+            Le carnet de voyage
+            <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="dropdown">
+            <div class="dropdown-title">Notre univers</div>
+            <ul>
+              <li>
+                <a href="#">
+                  <span class="ico">📖</span>
+                  L'histoire de Croc'Monde
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="ico">🗺️</span>
+                  Inspirations & saveurs du monde
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="ico">🎨</span>
+                  Coulisses de la création
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- 3. Voyageurs engagés -->
+        <li class="nav-item">
+          <div class="nav-link">
+            Voyageurs engagés
+            <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="dropdown">
+            <div class="dropdown-title">Communauté</div>
+            <ul>
+              <li>
+                <a href="#">
+                  <span class="ico">⭐</span>
+                  Avis de voyageurs
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="ico">🗳️</span>
+                  Sondages & interactions
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="ico">🔮</span>
+                  Et pour le prochain goût ?
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- 4. Trouvez nos pépites -->
+        <li class="nav-item">
+          <div class="nav-link">
+            Trouvez nos pépites
+            <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="dropdown">
+            <div class="dropdown-title">Où acheter</div>
+            <ul>
+              <li>
+                <a href="#">
+                  <span class="ico">🏪</span>
+                  En physique
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="ico">🛒</span>
+                  En ligne
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- 5. Nous contacter -->
+        <li class="nav-item">
+          <div class="nav-link">
+            Nous contacter
+            <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="dropdown">
+            <div class="dropdown-title">Bavardons !</div>
+            <ul>
+              <li>
+                <a href="#">
+                  <span class="ico">📱</span>
+                  Nos réseaux
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="ico">💬</span>
+                  Chatbox
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="ico">❓</span>
+                  FAQ
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+      </ul>
+
+      <!-- CTA -->
+      <div class="nav-cta">
+        <a href="#">
+          <i class="fas fa-map-marker-alt"></i>
+          Où trouver ?
+        </a>
+      </div>
+
+      <!-- Burger -->
+      <div class="burger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+
+    <div class="hero-inner">
+      <!-- Texte -->
+      <div class="hero-left">
+        <div class="hero-kicker">
+          🌍 Michel & Augustin présentent
+        </div>
+        <h1 class="hero-title">
+          Prenez vos billets pour une <em>expérience gustative</em> inoubliable
+        </h1>
+        <p class="hero-desc">
+          Croc'Monde, c'est 6 biscuits artisanaux, 6 continents, 6 saveurs authentiques. 
+          Un coffret qui fait voyager vos papilles de l'Afrique à l'Océanie !
+        </p>
+        <div class="hero-badges">
+          <span class="hero-badge">🌍 6 Continents</span>
+          <span class="hero-badge">🍪 6 Saveurs</span>
+          <span class="hero-badge">🎁 Idéal Cadeau</span>
+        </div>
+        <div class="hero-btns">
+          <a href="#pages" class="btn-primary">
+            <i class="fas fa-compass"></i>
+            Commencer le voyage
+          </a>
+          <a href="#" class="btn-secondary">
+            <i class="fas fa-map-marker-alt"></i>
+            Où trouver ?
+          </a>
+        </div>
+      </div>
+
+      <!-- Image produit uniquement -->
+      <div class="hero-right">
+        <div class="hero-box-wrapper">
+          <img src="crocmonde-box.jpeg" alt="Boîte Croc'Monde" class="hero-box-img">
+          <div class="hero-sticker">
+            <span class="big">🎁</span>
+            IDÉAL<br>CADEAU
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ACCÈS AUX 4 PAGES ==================== -->
+  <section class="pages-section" id="pages">
+    <div style="max-width:1280px;margin:0 auto;padding:0 2rem 3rem;text-align:center">
+      <span class="section-kicker">Explorez l'univers</span>
+      <h2 class="section-title" style="margin-top:.5rem">Où voulez-vous aller ?</h2>
+      <p class="section-sub">Choisissez votre destination gourmande et partez à l'aventure !</p>
+    </div>
+
+    <div class="pages-grid">
+      <!-- Tour du monde -->
+      <div class="page-card page-card-1">
+        <div class="page-card-top">
+          <div class="page-card-icon">🌍</div>
+          <h3 class="page-card-title">Le tour du monde en 6 crocs</h3>
+          <p class="page-card-desc">Découvrez nos 6 biscuits emblématiques et toutes les infos pratiques.</p>
+        </div>
+        <div class="page-card-bottom">
+          Embarquer <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <!-- Carnet de voyage -->
+      <div class="page-card page-card-2">
+        <div class="page-card-top">
+          <div class="page-card-icon">📖</div>
+          <h3 class="page-card-title">Le carnet de voyage</h3>
+          <p class="page-card-desc">Notre histoire, nos inspirations et les coulisses de la création Croc'Monde.</p>
+        </div>
+        <div class="page-card-bottom">
+          Lire le carnet <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <!-- Voyageurs engagés -->
+      <div class="page-card page-card-3">
+        <div class="page-card-top">
+          <div class="page-card-icon">⭐</div>
+          <h3 class="page-card-title">Voyageurs engagés</h3>
+          <p class="page-card-desc">Partagez vos avis, votez pour la prochaine saveur et rejoignez la communauté.</p>
+        </div>
+        <div class="page-card-bottom">
+          Rejoindre <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <!-- Trouvez nos pépites -->
+      <div class="page-card page-card-4">
+        <div class="page-card-top">
+          <div class="page-card-icon">🏪</div>
+          <h3 class="page-card-title">Trouvez nos pépites</h3>
+          <p class="page-card-desc">En magasin ou en ligne, trouvez Croc'Monde près de chez vous !</p>
+        </div>
+        <div class="page-card-bottom">
+          Localiser <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTINENTS STRIP ==================== -->
+  <section class="continents-strip">
+    <div style="max-width:1280px;margin:0 auto;padding:0 2rem 3rem;text-align:center">
+      <span class="section-kicker">6 saveurs, 6 continents</span>
+      <h2 class="section-title" style="margin-top:.5rem">Choisissez votre escale</h2>
+    </div>
+    <div class="continents-grid">
+      <div class="continent-pill">
+        <span class="continent-emoji">🌍</span>
+        <div class="continent-label">Afrique de l'Ouest</div>
+        <div class="continent-sublabel">Biscuit au Bissap</div>
+        <span class="croc-badge">Floral</span>
+      </div>
+      <div class="continent-pill">
+        <span class="continent-emoji">🇧🇪</span>
+        <div class="continent-label">Europe — Belgique</div>
+        <div class="continent-sublabel">Spéculoos & fleur de sel</div>
+        <span class="croc-badge">Épicé</span>
+      </div>
+      <div class="continent-pill">
+        <span class="continent-emoji">🇯🇵</span>
+        <div class="continent-label">Asie — Japon</div>
+        <div class="continent-sublabel">Matcha & sésame noir</div>
+        <span class="croc-badge">Végétal</span>
+      </div>
+      <div class="continent-pill">
+        <span class="continent-emoji">🇨🇦</span>
+        <div class="continent-label">Amérique du Nord</div>
+        <div class="continent-sublabel">Érable & pécan</div>
+        <span class="croc-badge">Caramélisé</span>
+      </div>
+      <div class="continent-pill">
+        <span class="continent-emoji">🇦🇷</span>
+        <div class="continent-label">Amérique du Sud</div>
+        <div class="continent-sublabel">Dulce de leche</div>
+        <span class="croc-badge">Gourmand</span>
+      </div>
+      <div class="continent-pill">
+        <span class="continent-emoji">🇦🇺</span>
+        <div class="continent-label">Océanie — Australie</div>
+        <div class="continent-sublabel">Pandanus & coco</div>
+        <span class="croc-badge">Tropical</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BANDEAU PRODUIT ==================== -->
+  <section class="bandeau-produit">
+    <div class="bandeau-inner">
+      <div class="bandeau-text">
+        <span class="section-kicker">Le coffret</span>
+        <h2 class="section-title" style="margin:.75rem 0 1.5rem">La boîte Croc'Monde, le cadeau qui voyage</h2>
+        <p>Une boîte collector signée Michel & Augustin, avec une carte du monde illustrée et 6 biscuits artisanaux. Le cadeau parfait pour les curieux, les gourmands et les aventuriers !</p>
+        <a href="#" class="btn-primary">
+          <i class="fas fa-map-marker-alt"></i>
+          Trouver en magasin
+        </a>
+      </div>
+      <div class="bandeau-img">
+        <img src="crocmonde-box.jpeg" alt="Boîte Croc'Monde">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== AVIS ==================== -->
+  <section class="avis-section">
+    <div class="section">
+      <div class="section-head">
+        <span class="section-kicker">Communauté</span>
+        <h2 class="section-title">Ce que disent nos voyageurs</h2>
+        <p class="section-sub">Ils ont ouvert la boîte et sont partis en voyage gustatif !</p>
+      </div>
+      <div class="avis-grid">
+        <div class="avis-card">
+          <div class="avis-stars">★★★★★</div>
+          <p class="avis-text">"On a fait une dégustation en famille, c'est trop bien comme concept ! Le matcha a surpris tout le monde en bien."</p>
+          <div class="avis-author">
+            <div class="avis-avatar">S</div>
+            <div>
+              <div class="avis-name">Sophie M.</div>
+              <div class="avis-location">Paris 🇫🇷</div>
+            </div>
+          </div>
+        </div>
+        <div class="avis-card">
+          <div class="avis-stars">★★★★★</div>
+          <p class="avis-text">"Le spéculoos + fleur de sel est celui qui plait à tout le monde, mais personnellement j'ai une tendresse pour le bissap !"</p>
+          <div class="avis-author">
+            <div class="avis-avatar">L</div>
+            <div>
+              <div class="avis-name">Lucas B.</div>
+              <div class="avis-location">Lyon 🇫🇷</div>
+            </div>
+          </div>
+        </div>
+        <div class="avis-card">
+          <div class="avis-stars">★★★★☆</div>
+          <p class="avis-text">"Offert en cadeau d'anniversaire, ma copine a adoré ! Le packaging est super joli, ça fait vraiment son effet quand on l'ouvre."</p>
+          <div class="avis-author">
+            <div class="avis-avatar">E</div>
+            <div>
+              <div class="avis-name">Emma D.</div>
+              <div class="avis-location">Bordeaux 🇫🇷</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NEWSLETTER ==================== -->
+  <section class="newsletter">
+    <h3>✉️ Restez dans la boucle du voyage !</h3>
+    <p>Nouvelles saveurs, actus Croc'Monde et offres exclusives — promis, on n'écrit pas plus d'une fois par mois !</p>
+    <form class="newsletter-form" onsubmit="return false">
+      <input type="email" placeholder="Votre email de voyageur...">
+      <button type="submit">Embarquer !</button>
+    </form>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <strong>🌍 Croc'Monde</strong>
+        <small>by Michel & Augustin — Les Trublions du Goût</small>
+        <p>Un voyage gustatif authentique à travers 6 continents. Découvrez, dégustez, partagez et votez pour la prochaine saveur !</p>
+        <div class="footer-socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Nos pages</h5>
+        <ul>
+          <li><a href="#">Le tour du monde en 6 crocs</a></li>
+          <li><a href="#">Le carnet de voyage</a></li>
+          <li><a href="#">Voyageurs engagés</a></li>
+          <li><a href="#">Trouvez nos pépites</a></li>
+          <li><a href="#">Nous contacter</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Les 6 saveurs</h5>
+        <ul>
+          <li><a href="#">🌍 Afrique – Bissap</a></li>
+          <li><a href="#">🇧🇪 Europe – Spéculoos</a></li>
+          <li><a href="#">🇯🇵 Asie – Matcha</a></li>
+          <li><a href="#">🇨🇦 Canada – Érable</a></li>
+          <li><a href="#">🇦🇷 Argentine – Dulce</a></li>
+          <li><a href="#">🇦🇺 Australie – Pandanus</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Infos</h5>
+        <ul>
+          <li><a href="#">Qualité & Ingrédients</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Où trouver ?</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2024 Croc'Monde by <span>Michel & Augustin</span> — Fait avec ❤️ par Les Trublions du Goût
+    </div>
+  </footer>
+
+  <script>
+    // === MENU BURGER MOBILE ===
+    function toggleMenu() {
+      const menu = document.querySelector('.nav-menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // === NAVBAR SCROLL ===
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.navbar');
+      if (window.scrollY > 40) {
+        nav.style.boxShadow = '0 6px 30px rgba(92,61,30,.25)';
+      } else {
+        nav.style.boxShadow = '0 4px 20px rgba(92,61,30,.15)';
+      }
+    });
+
+    // === ANIMATIONS AU SCROLL ===
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.page-card, .continent-pill, .avis-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s cubic-bezier(.4,0,.2,1)';
+      observer.observe(el);
+    });
+
+    // Délais en cascade
+    document.querySelectorAll('.page-card').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.1}s`;
+    });
+    document.querySelectorAll('.continent-pill').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.08}s`;
+    });
+    document.querySelectorAll('.avis-card').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.12}s`;
+    });
+  </script>
+</body>
+</html>
